@@ -1,4 +1,5 @@
 import React from 'react';
+import Data from '../services/data-service';
 
 class Sidebar extends React.Component{
   constructor(props){
@@ -10,11 +11,18 @@ class Sidebar extends React.Component{
    }    
   }
 
+    componentDidMount(){
+        Data.getData('https://randomuser.me/api/?results=8').then( res => {
+          this.setState({data:res.results})
+        })
+    }
+
   addToList(ev){
     ev.preventDefault();
-    this.setState({data: [...this.state.data,{'name':ev.target.newuser.value} ] });
+    this.setState({data: [...this.state.data,{name:{'first':ev.target.newuser.value}} ] });
     ev.target.newuser.value = '';
   }
+ 
 
   render(){
       return(
@@ -31,7 +39,9 @@ class Sidebar extends React.Component{
             <h2>Active Users List</h2>   
             <ul className="list-group">    
               {this.state.data.map( (e,index) => {
-                 return <li className="list-group-item" key={index}>{e.name}</li>
+                 return <li onClick={this.props.setSeletedUser.bind(this,{e})} 
+                            className="list-group-item" 
+                            key={index}>{e.name.first} {e.name.last}</li>
               })}
             </ul>
           </div>
