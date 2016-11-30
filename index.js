@@ -1,5 +1,7 @@
 var http = require('http');
 
-http.createServer( (req,res) => {
-  res.end('e')
+var Route = require('./server/route');
+
+http.createServer( (req,res) => {  
+   Route(req,res);
 }).listen(9000)
