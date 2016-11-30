@@ -21487,6 +21487,14 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _Sidebar = __webpack_require__(179);
+
+	var _Sidebar2 = _interopRequireDefault(_Sidebar);
+
+	var _Main = __webpack_require__(180);
+
+	var _Main2 = _interopRequireDefault(_Main);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -21508,9 +21516,10 @@
 	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
-	                'h1',
-	                { className: 'panel' },
-	                'Head'
+	                'div',
+	                { className: 'col-md-12 outer' },
+	                _react2.default.createElement(_Sidebar2.default, null),
+	                _react2.default.createElement(_Main2.default, null)
 	            );
 	        }
 	    }]);
@@ -21519,6 +21528,149 @@
 	}(_react2.default.Component);
 
 	exports.default = App;
+
+/***/ },
+/* 179 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Sidebar = function (_React$Component) {
+	    _inherits(Sidebar, _React$Component);
+
+	    function Sidebar(props) {
+	        _classCallCheck(this, Sidebar);
+
+	        var _this = _possibleConstructorReturn(this, (Sidebar.__proto__ || Object.getPrototypeOf(Sidebar)).call(this, props));
+
+	        _this.state = {
+	            data: [{ name: 'Ankit' }, { name: 'Kumar' }]
+	        };
+	        return _this;
+	    }
+
+	    _createClass(Sidebar, [{
+	        key: 'addToList',
+	        value: function addToList(ev) {
+	            ev.preventDefault();
+	            console.log(ev.target.newuser.value);
+	            this.setState({ data: [].concat(_toConsumableArray(this.state.data), [{ 'name': ev.target.newuser.value }]) });
+	            ev.target.newuser.value = '';
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                { className: 'col-md-3 full-height sidebar' },
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'row' },
+	                    _react2.default.createElement(
+	                        'form',
+	                        { className: 'input-group',
+	                            onSubmit: this.addToList.bind(this) },
+	                        _react2.default.createElement('input', { name: 'newuser', type: 'text', className: 'form-control', placeholder: 'Add user...' }),
+	                        _react2.default.createElement(
+	                            'span',
+	                            { className: 'input-group-btn' },
+	                            _react2.default.createElement(
+	                                'button',
+	                                { className: 'btn btn-default', type: 'submit' },
+	                                'Add'
+	                            )
+	                        )
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'h2',
+	                    null,
+	                    'Active Users List'
+	                ),
+	                _react2.default.createElement(
+	                    'ul',
+	                    { className: 'list-group' },
+	                    this.state.data.map(function (e, index) {
+	                        return _react2.default.createElement(
+	                            'li',
+	                            { className: 'list-group-item', key: index },
+	                            e.name
+	                        );
+	                    })
+	                )
+	            );
+	        }
+	    }]);
+
+	    return Sidebar;
+	}(_react2.default.Component);
+
+	exports.default = Sidebar;
+
+/***/ },
+/* 180 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Main = function (_React$Component) {
+	    _inherits(Main, _React$Component);
+
+	    function Main() {
+	        _classCallCheck(this, Main);
+
+	        return _possibleConstructorReturn(this, (Main.__proto__ || Object.getPrototypeOf(Main)).apply(this, arguments));
+	    }
+
+	    _createClass(Main, [{
+	        key: "render",
+	        value: function render() {
+	            return _react2.default.createElement("div", { className: "col-md-9 full-height main" });
+	        }
+	    }]);
+
+	    return Main;
+	}(_react2.default.Component);
+
+	exports.default = Main;
 
 /***/ }
 /******/ ]);
