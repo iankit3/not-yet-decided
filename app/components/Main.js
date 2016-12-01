@@ -12,7 +12,7 @@ class Main extends React.Component{
   }
 
   componentDidMount(){
-     Data.getData('https://baconipsum.com/api/?type=all-meat&paras=3&start-with-lorem=1')
+     Data.getData('https://baconipsum.com/api/?type=all-meat&paras=2&start-with-lorem=1')
      .then( (res) => { this.setState({randomData:res});console.log(this);console.log(res) })
   }
   render(){
@@ -21,7 +21,7 @@ class Main extends React.Component{
             <div className="row">
                 <SelectedUser selecteduser={this.props.selecteduser} />
             </div>
-           <h1>Some bacon ipsum content</h1>
+           <h1 style={{marginTop: 0.1+'em'}}>Some bacon ipsum content</h1>
               <section>
                   <article>
                       {this.state.randomData}

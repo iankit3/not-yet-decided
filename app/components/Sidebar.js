@@ -1,5 +1,6 @@
 import React from 'react';
 import Data from '../services/data-service';
+import AddUser from './AddUser';
 
 class Sidebar extends React.Component{
   constructor(props){
@@ -12,7 +13,7 @@ class Sidebar extends React.Component{
   }
 
     componentDidMount(){
-        Data.getData('https://randomuser.me/api/?results=8').then( res => {
+        Data.getData('https://randomuser.me/api/?results=12').then( res => {
           this.setState({data:res.results})
         })
     }
@@ -28,13 +29,7 @@ class Sidebar extends React.Component{
       return(
           <div className="col-md-3 full-height sidebar">
               <div className="row">
-                  <form className="input-group"
-                       onSubmit={this.addToList.bind(this)}>
-                      <input name="newuser" type="text" className="form-control" placeholder="Add user..." />
-                          <span className="input-group-btn">
-                              <button className="btn btn-default" type="submit">Add</button>
-                          </span>
-                  </form>
+                  <AddUser addToList={this.addToList.bind(this)} />
                </div>
             <h2>Active Users List</h2>   
             <ul className="list-group">    

@@ -9,12 +9,24 @@ class SelectedUser extends React.Component{
     render(){
         return(
             <div className="jumbotron">
-             <h3>User Details</h3>    
-             <ul className="list-group">
-                <li>{this.props.selecteduser.dob}</li>
-                <li>{this.props.selecteduser.email}</li>
-                <li>{this.props.selecteduser.gender}</li>
-            </ul>
+                <h2 className="panel panel-info panel-heading">{this.props.selecteduser.name.first}</h2>
+                <div className="card">
+                    <h3>User Details</h3>    
+                    <ul className="list-group">  
+                        <li className="list-group-item">
+                        <span className="glyphicon glyphicon-envelope"></span>
+                        {this.props.selecteduser.email}
+                        </li>
+                        <li className="list-group-item">
+                        <span className="glyphicon glyphicon-time"></span>
+                        {this.props.selecteduser.dob}
+                        </li>
+                        <li className="list-group-item">
+                        <span className="glyphicon glyphicon-user"></span>
+                        {this.props.selecteduser.gender}
+                        </li>
+                    </ul>
+                </div>
             </div>
         )
     }

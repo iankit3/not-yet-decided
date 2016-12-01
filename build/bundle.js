@@ -21491,7 +21491,7 @@
 
 	var _Sidebar2 = _interopRequireDefault(_Sidebar);
 
-	var _Main = __webpack_require__(181);
+	var _Main = __webpack_require__(182);
 
 	var _Main2 = _interopRequireDefault(_Main);
 
@@ -21512,7 +21512,7 @@
 	        var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
 
 	        _this.state = {
-	            selecteduser: {}
+	            selecteduser: { name: { first: 'Ankit' } }
 	        };
 	        return _this;
 	    }
@@ -21560,6 +21560,10 @@
 
 	var _dataService2 = _interopRequireDefault(_dataService);
 
+	var _AddUser = __webpack_require__(181);
+
+	var _AddUser2 = _interopRequireDefault(_AddUser);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
@@ -21589,7 +21593,7 @@
 	        value: function componentDidMount() {
 	            var _this2 = this;
 
-	            _dataService2.default.getData('https://randomuser.me/api/?results=8').then(function (res) {
+	            _dataService2.default.getData('https://randomuser.me/api/?results=12').then(function (res) {
 	                _this2.setState({ data: res.results });
 	            });
 	        }
@@ -21611,21 +21615,7 @@
 	                _react2.default.createElement(
 	                    'div',
 	                    { className: 'row' },
-	                    _react2.default.createElement(
-	                        'form',
-	                        { className: 'input-group',
-	                            onSubmit: this.addToList.bind(this) },
-	                        _react2.default.createElement('input', { name: 'newuser', type: 'text', className: 'form-control', placeholder: 'Add user...' }),
-	                        _react2.default.createElement(
-	                            'span',
-	                            { className: 'input-group-btn' },
-	                            _react2.default.createElement(
-	                                'button',
-	                                { className: 'btn btn-default', type: 'submit' },
-	                                'Add'
-	                            )
-	                        )
-	                    )
+	                    _react2.default.createElement(_AddUser2.default, { addToList: this.addToList.bind(this) })
 	                ),
 	                _react2.default.createElement(
 	                    'h2',
@@ -21699,6 +21689,65 @@
 /* 181 */
 /***/ function(module, exports, __webpack_require__) {
 
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var AddUser = function (_React$Component) {
+	    _inherits(AddUser, _React$Component);
+
+	    function AddUser() {
+	        _classCallCheck(this, AddUser);
+
+	        return _possibleConstructorReturn(this, (AddUser.__proto__ || Object.getPrototypeOf(AddUser)).apply(this, arguments));
+	    }
+
+	    _createClass(AddUser, [{
+	        key: "render",
+	        value: function render() {
+	            return _react2.default.createElement(
+	                "form",
+	                { className: "input-group",
+	                    onSubmit: this.props.addToList.bind(this) },
+	                _react2.default.createElement("input", { name: "newuser", type: "text", className: "form-control", placeholder: "Add user..." }),
+	                _react2.default.createElement(
+	                    "span",
+	                    { className: "input-group-btn" },
+	                    _react2.default.createElement(
+	                        "button",
+	                        { className: "btn btn-default", type: "submit" },
+	                        "Add"
+	                    )
+	                )
+	            );
+	        }
+	    }]);
+
+	    return AddUser;
+	}(_react2.default.Component);
+
+	exports.default = AddUser;
+
+/***/ },
+/* 182 */
+/***/ function(module, exports, __webpack_require__) {
+
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
@@ -21711,7 +21760,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _SelectedUser = __webpack_require__(182);
+	var _SelectedUser = __webpack_require__(183);
 
 	var _SelectedUser2 = _interopRequireDefault(_SelectedUser);
 
@@ -21746,7 +21795,7 @@
 	        value: function componentDidMount() {
 	            var _this2 = this;
 
-	            _dataService2.default.getData('https://baconipsum.com/api/?type=all-meat&paras=3&start-with-lorem=1').then(function (res) {
+	            _dataService2.default.getData('https://baconipsum.com/api/?type=all-meat&paras=2&start-with-lorem=1').then(function (res) {
 	                _this2.setState({ randomData: res });console.log(_this2);console.log(res);
 	            });
 	        }
@@ -21763,7 +21812,7 @@
 	                ),
 	                _react2.default.createElement(
 	                    'h1',
-	                    null,
+	                    { style: { marginTop: 0.1 + 'em' } },
 	                    'Some bacon ipsum content'
 	                ),
 	                _react2.default.createElement(
@@ -21785,7 +21834,7 @@
 	exports.default = Main;
 
 /***/ },
-/* 182 */
+/* 183 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -21830,27 +21879,39 @@
 	                "div",
 	                { className: "jumbotron" },
 	                _react2.default.createElement(
-	                    "h3",
-	                    null,
-	                    "User Details"
+	                    "h2",
+	                    { className: "panel panel-info panel-heading" },
+	                    this.props.selecteduser.name.first
 	                ),
 	                _react2.default.createElement(
-	                    "ul",
-	                    { className: "list-group" },
+	                    "div",
+	                    { className: "card" },
 	                    _react2.default.createElement(
-	                        "li",
+	                        "h3",
 	                        null,
-	                        this.props.selecteduser.dob
+	                        "User Details"
 	                    ),
 	                    _react2.default.createElement(
-	                        "li",
-	                        null,
-	                        this.props.selecteduser.email
-	                    ),
-	                    _react2.default.createElement(
-	                        "li",
-	                        null,
-	                        this.props.selecteduser.gender
+	                        "ul",
+	                        { className: "list-group" },
+	                        _react2.default.createElement(
+	                            "li",
+	                            { className: "list-group-item" },
+	                            _react2.default.createElement("span", { className: "glyphicon glyphicon-envelope" }),
+	                            this.props.selecteduser.email
+	                        ),
+	                        _react2.default.createElement(
+	                            "li",
+	                            { className: "list-group-item" },
+	                            _react2.default.createElement("span", { className: "glyphicon glyphicon-time" }),
+	                            this.props.selecteduser.dob
+	                        ),
+	                        _react2.default.createElement(
+	                            "li",
+	                            { className: "list-group-item" },
+	                            _react2.default.createElement("span", { className: "glyphicon glyphicon-user" }),
+	                            this.props.selecteduser.gender
+	                        )
 	                    )
 	                )
 	            );
